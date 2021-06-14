@@ -29,9 +29,7 @@ class Whatsappbot:
                     cont += 1
                     if iden2 == iden:
                         botao = self.driver.find_element_by_xpath(f'//*[@id="main"]/div[3]/div/div/div[2]/div[{cont}]/div/div/div/div[2]/div[1]/div/div[1]/button')
-                        return False 
-                        #//*[@id="main"]/div[3]/div/div/div[2]/div[14]/div/div/div/div[2]/div[1]/div/div[1]/button
-                        #//*[@id="main"]/div[3]/div/div/div[2]/div[16]/div/div/div/div[2]/div[1]/div/div[1]/button
+                        return False
         except:
             a = fala.init()
             a.say('Não estou conseguindo converter o seu audio')
@@ -41,13 +39,6 @@ class Whatsappbot:
         a = fala.init()
         a.say('Temos um link do meet')
         a.runAndWait()
-        #driver = self.met = webdriver.Chrome(executable_path=r'./chromedriver.exe')
-        #self.met.find_element_by_xpath('//input[@type="email"]').send_keys('tiodopave01@gmail.com')
-        #self.met.find_element_by_xpath('//*[@id="identifierNext"]').click()
-        #time.sleep(3)
-        #self.met.find_element_by_xpath('//input[@type="password"]').send_keys('objetivo@123$')
-        #self.met.find_element_by_xpath('//*[@id="passwordNext"]').click()
-        #time.sleep(2)
 
     def meet(self, link):
         n1 = 'https://meet.google.com/' in link
@@ -58,7 +49,6 @@ class Whatsappbot:
             else:
                 link = f'https://{link}'
             hehe.meet2(link)
-            #winsound.Beep(261, 1000)
         else:
             pass
 
@@ -139,120 +129,6 @@ class Whatsappbot:
                         print('Cheguei no id desejado, que é: {}'.format(n1)) #25E e 243D
                         hehe.identificador5(n1)
                         hehe.identificador2(n1)
-
-    def limpador(self): 
-        print('Limpador')
-        self.excecoes = []
-        tudo = self.driver.find_element_by_xpath('//*[@id="main"]/div[3]/div/div/div[3]')
-        tudo = tudo.get_attribute('innerHTML')
-        soup = BeautifulSoup(tudo, 'html.parser')
-        mensagens = soup.find_all('div', {'tabindex':'-1'})
-        for c in mensagens:
-            try:
-                iden = c['data-id']
-            except:
-                pass
-            else:
-                n2 = c.find('div', {'class':'_3XpKm _20zqk'})
-                try:
-                    try:
-                        mandante = n2.find('span')
-                    except:
-                        pass
-                    else:
-                        try:
-                            mandante = mandante['aria-label']
-                            texto = n2.text
-                            texto = texto[0:len(texto) - 5] #para tirar a hora que ficava no final
-                            texto = texto.upper()
-                            
-                            pessoas = ['Asafe2']
-                            for pessoa in pessoas:
-                                pessoa = pessoa.upper()
-                                h1 = pessoa in texto
-                                if h1 == False:
-                                    c1 = 'BOM DIA' in texto
-                                    c2 = 'OLA' in texto
-                                    c3 = 'OLÁ' in texto
-                                    c4 = 'GOOD MORNING' in texto
-                                    c5 = 'GODOY'
-                                    c7 = 'PEDRO GOZALO OK'
-                                    c8 = 'ANA LAURA OK'
-                                    c9 = 'ASAFE OK'
-                                    c10 = 'BRENDA OK'
-                                    c11 = 'JULIANA OK'
-                                    c12 = 'MARIA CLARA OK'
-                                    c13 = 'PABLO OK'
-                                    c14 = 'MARIA CAROLINA OK'
-                                    if c1 or c2 or c3 or c4 == True:
-                                        self.excecoes.append(iden)
-                                    if c7 == texto or c8 == texto or c9 == texto or c10 == texto or c11 == texto or c12 == texto or c13 == texto or c14 == texto:
-                                        self.excecoes.append(iden)                    
-                                    #print(texto)
-                                    #print('\n')
-                        except:
-                            texto = n2.text
-                            texto = texto[0:len(texto) - 5]
-                            texto = texto.upper()
-                            #teste para saber se é imagem
-                            pessoas = ['Asafe2']
-                            for pessoa in pessoas:
-                                pessoa = pessoa.upper()
-                                h1 = pessoa in texto
-                                if h1 == False:
-                                    c1 = 'BOM DIA' in texto
-                                    c2 = 'OLA' in texto
-                                    c3 = 'OLÁ' in texto
-                                    c4 = 'GOOD MORNING' in texto
-                                    c5 = 'GODOY'
-                                    c7 = 'PEDRO GOZALO OK'
-                                    c8 = 'ANA LAURA OK'
-                                    c9 = 'ASAFE OK'
-                                    c10 = 'BRENDA OK'
-                                    c11 = 'JULIANA OK'
-                                    c12 = 'MARIA CLARA OK'
-                                    c13 = 'PABLO OK'
-                                    c14 = 'MARIA CAROLINA OK'
-                                    if c1 or c2 or c3 or c4 == True:
-                                        self.excecoes.append(iden)
-                                    if c7 == texto or c8 == texto or c9 == texto or c10 == texto or c11 == texto or c12 == texto or c13 == texto or c14 == texto:
-                                        self.excecoes.append(iden)
-                                    #print(texto)
-                                    #print('\n')
-                            try:
-                                mandante = mandante.text
-                                texto = texto[len(mandante):]
-                                texto = texto.upper()
-                                pessoas = ['Asafe2']
-                                for pessoa in pessoas:
-                                    pessoa = pessoa.upper()
-                                    h1 = pessoa in texto
-                                    if h1 == False:
-                                        c1 = 'BOM DIA' in texto
-                                        c2 = 'OLA' in texto
-                                        c3 = 'OLÁ' in texto
-                                        c4 = 'GOOD MORNING' in texto
-                                        c5 = 'GODOY'
-                                        c7 = 'PEDRO GOZALO OK'
-                                        c8 = 'ANA LAURA OK'
-                                        c9 = 'ASAFE OK'
-                                        c10 = 'BRENDA OK'
-                                        c11 = 'JULIANA OK'
-                                        c12 = 'MARIA CLARA OK'
-                                        c13 = 'PABLO OK'
-                                        c14 = 'MARIA CAROLINA OK'
-                                        if c1 or c2 or c3 or c4 == True:
-                                            self.excecoes.append(iden)
-                                        if c7 == texto or c8 == texto or c9 == texto or c10 == texto or c11 == texto or c12 == texto or c13 == texto or c14 == texto:
-                                            self.excecoes.append(iden)                   
-                                        #print(texto)
-                                        #print('\n')
-                            except:
-                                print('Cai no outro')
-                except Exception as erro:
-                    pass
-        print(self.excecoes)
-
     def comprimentos(self, texto):
         print('Comprimentos')
         hehe.meet(texto)
@@ -582,8 +458,6 @@ class Whatsappbot:
                                 else:
                                     print('TENHO ORDENS PARA NÃO ENVIAR AINDA')
                                 #teste para saber se é imagem
-                                #print(texto)
-                                #print('\n')
                                 try:
                                     audio = n2.find('div', {'class':'_1RXxK _17EPa _33A8G'})
                                     if str(audio) != 'None':
@@ -721,7 +595,7 @@ class Whatsappbot:
                     if str(resposta) != 'None':
                         try:
                             try:
-                                mandante_res = resposta.find('div', {'class':'_26iqs color-2'}) #_26iqs color-2 // 1°: _26iqs color-2
+                                mandante_res = resposta.find('div', {'class':'_26iqs color-2'})
                                 mandante_res = mandante_res.text
                             except:
                                 mandante_res = n2.find('div', {'class':'_26iqs color-1 UxSU9'})
@@ -820,14 +694,8 @@ class Whatsappbot:
                             n4 = c.find('span', {'class':'_3-8er'})
                             if str(n4) != 'None':
                                 p1 = 'HOJE' in n4.text
-                                #if p1 == True:
-                                    #self.idens = self.horario = []
                             else:
                                 pass
-                                #print('\033[1;95mFigurinha\033[0;0m')
-                                #self.textos.append('Figurinha')
-                                #idens = c['data-id']
-                                #self.idens.append(idens)
                         try:
                             mandante = mandante['aria-label']
                             texto = n2.text
@@ -847,9 +715,6 @@ class Whatsappbot:
                                         mandante_res = mandante_res.text   
                                     res = resposta.find('div', {'class':'_31DtU'})
                                     res = res.text
-                                    #print('\n')
-                                    #print(f'\033[1;95mResposta a {mandante_res}: \033[1;94m{res}\033[0;0m')
-                                    #print('texto com mandante')
                                     texto = texto[len(mandante_res) + len(res):]
                                 except:
                                     pass
@@ -879,17 +744,9 @@ class Whatsappbot:
                                                 #print('\n')
                                                 #print('\n\033[1;95mImagem\033[0;0m')
                                                 pass
-                            #print('\n')
-                            #print(f'\033[1;94m{mandante}\033[1;93m{texto}    {hora_da_msg}\033[0;0m')  #\033[1;36m{hora_da_msg}\033[0;0m \n')
-                            #self.textos.append(texto)
-                            #idens = c['data-id']
-                            #self.idens.append(idens)
                             texto = texto.upper()
-                            #h1 = idens[0:5]
                         except:
                             texto = n2.text
-                            #hora_da_msg = texto[len(texto) - 5:]
-                            #self.horario.append(hora_da_msg)
                             texto = texto[0:len(texto) - 5]
                             #teste para saber se é imagem
                             resposta = n2.find('div', {'class':'xkqQM copyable-text'})
@@ -938,15 +795,12 @@ class Whatsappbot:
                                 mandante_res.text
                                 texto = n2.find('div', {'class':'xkqQM copyable-text'})
                                 texto = texto.text
-                                #print(f'\033[1;95mResposta a {mandante_res}: \033[1;94m{texto}\033[0;0m')
                             except:
                                 try:
                                     mandante_res = n2.find('div', {'class':'_1Lc2C _3-8er'})
                                     mandante_res.text
                                     texto = n2.find('div', {'class':'xkqQM copyable-text'})
                                     texto = texto.text
-                                    #print(f'\033[1;95mResposta a {mandante_res}: \033[1;94m{texto}\033[0;0m')
-                                    #print(f'\033[1;95mResposta a {mandante_res}: \033[1;94m{res}\033[0;0m')
                                 except:
                                     mandante = n2.find('div', {'class':'LGz0y'})
                                     try:
@@ -958,22 +812,16 @@ class Whatsappbot:
                                             mandante = n2.find('div', {'class':'_26iqs color-1 UxSU9'})
                                             mandante = mandante.text
                                             texto = texto[len(mandante):]
-                                            #print(f'\033[1;93m{mandante}    {texto}    {hora_da_msg}\033[0;0m')#  \033[1;36m{hora_da_msg}\033[0;0m \n')
                                         except:
                                             pass
-                                            #print(f'\033[1;93m{texto}    {hora_da_msg}\033[0;0m')#  \033[1;36m{hora_da_msg}\033[0;0m \n') 
-                            #self.textos.append(texto)
-                            #idens = c['data-id']
-                            #self.idens.append(idens)
                             texto = texto.upper()
-                            #h1 = idens[0:5]
                     except Exception as erro:
                         time.sleep(1)
 
     def identificador3(self):
         self.dia = self.oi = self.ola = self.morning = self.compri = self.oks = self.oks2 = 0
         self.mandar = False
-        self.grupo_certo = 'Grupo_dos_sonhadores' #Chimichurri // 9⁰ano Objetivo //Grupo_dos_sonhadores
+        self.grupo_certo = '9⁰ano Objetivo'
         self.bom_dia = []
         hehe.grupo(self.grupo_certo)
         hehe.limpador()
@@ -995,10 +843,7 @@ class Whatsappbot:
             time.sleep(20)
             hehe.grupo(self.grupo_certo)
             cala_a_boca = hehe.identificador4()
-            #print('Tenho que cala a boca é: {} \n \n \n E Tambem tenho que banana é {}'.format(cala_a_boca, banana))
-            #print('OS BOM DIAS SÃO: {}'.format(self.bom_dia))
             if len(cala_a_boca) > len(banana):
-                #a = ['a', 'b', 'c', 'd', 'e']
                 print('Definindo')
                 print(banana)
                 print('\n \n')
@@ -1035,7 +880,6 @@ class Whatsappbot:
                     for poc in p1:
                         banana.append(poc) 
                     hehe.msg_nova(p1)
-                #hehe.identificador()
                 if self.mandei == True:
                     break
 
@@ -1049,17 +893,12 @@ class Whatsappbot:
 
     def ativador(self):
         self.mandei = False
-        n1 = str(input('Aperte Enter'))
-        hehe.grupo('Grupo_dos_sonhadores') #9⁰ano Objetivo
+        hehe.grupo('9⁰ano Objetivo') #9⁰ano Objetivo
         time.sleep(1)
         hehe.identificador3()
-        #hehe.limpador()
-        #hehe.identificador('primeira')
 
 
 hehe = Whatsappbot()
-#hehe.ativador()
-#n1 = str(input('Aperte Enter')) #true_556781686882-1622692388@g.us_3EB03A7931A06D87E9AC
-#print('Tempo espera')
+n1 = str(input('Aperte Enter')) # O input serve para esperar o whatsapp web ser logado
 while True:
     hehe.ativador()
